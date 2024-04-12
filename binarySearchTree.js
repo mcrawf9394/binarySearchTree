@@ -63,6 +63,107 @@ class tree {
         }
         return [...sortedArray, ...leftArray, ...rightArray]
     }
+    rebalance () {
+
+    }
+    isBalanced () {
+
+    }
+    height (node) {
+
+    }
+    depth (node) {
+
+    }
+    find (value) {
+        let currentNode = this.root
+        while (currentNode) {
+            if (currentNode.value == value) {
+                return currentNode
+            }
+            else {
+                if (currentNode.value > value) {
+                    currentNode = currentNode.left
+                }
+                else {
+                    currentNode = currentNode.right
+                }
+            }
+        }
+        return "There is not such value"
+    }
+    insert (value) {
+        let currentNode = this.root
+        while (currentNode.left || currentNode.right) {
+            if (currentNode.value > value) {
+                currentNode = currentNode.left
+            }
+            else {
+                currentNode = currentNode.right
+            }
+        }
+        let newNode = new nodes (value)
+        if (currentNode.value > value) {
+            currentNode.left = newNode
+        }
+        else {
+            currentNode.right = newNode
+        }
+    }
+    levelOrder (callback) {
+
+    }
+    inOrder (callback) {
+
+    }
+    preOrder (callback) {
+
+    }
+    postOrder (callback) {
+
+    }
+    deleteItem(value){
+        let currentNode = this.root
+        let prevNode
+        let contains = false
+        while (currentNode) {
+            if (currentNode.value > value) {
+                prevNode = currentNode
+                currentNode = currentNode.left
+            }
+            else if (currentNode.value < value) {
+                prevNode = currentNode
+                currentNode = currentNode.right
+            }
+            else {
+                contains = true
+                break
+            }
+        }
+        if (contains === false){
+            console.log("No such item exists")
+        }
+        else {
+            if (currentNode.left) {
+                console.log("Im working on it")
+            }
+            else if (currentNode.right) {
+                console.log("Im working on it")
+            }
+            else {
+                if (prevNode.left === currentNode) {
+                    prevNode.left = null
+                }
+                else {
+                    prevNode.right = null
+                }
+            }
+        }
+    }
 }
 stuff = new tree ([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
+stuff.insert(2)
+stuff.insert(980)
+stuff.deleteItem(2)
+console.log(stuff.find(980))
 console.log (stuff.root)
